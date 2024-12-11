@@ -36,9 +36,10 @@ export default function UploadForm() {
     }
 
     const handleDownload = () => {
-        //Handle download logic here
-        console.log("Downloading file...")
-        setShowDownloadDialog(false)
+        if (downloadUrl) {
+            window.open(downloadUrl, '_blank');
+        }
+        setShowDownloadDialog(false);
     }
 
     const estimateTokens = () => {
@@ -94,11 +95,11 @@ export default function UploadForm() {
                         />
                         <Tabs defaultValue="app-key" className="w-full">
                             <TabsList className="grid w-full grid-cols-2">
-                                <TabsTrigger value="app-key">Use App's API Key</TabsTrigger>
+                                <TabsTrigger value="app-key">Use App API Key</TabsTrigger>
                                 <TabsTrigger value="own-key">Use Your Own API Key</TabsTrigger>
                             </TabsList>
                             <TabsContent value="app-key">
-                                <p className="text-sm text-gray-400 mb-4">We'll use our API key. You'll be charged based on usage.</p>
+                                <p className="text-sm text-gray-400 mb-4">We will use our API key. You will be charged based on usage.</p>
                                 <ConvertButton onClick={() => handleConvert(false)} isLoading={isLoading} />
                             </TabsContent>
                             <TabsContent value="own-key">
@@ -118,6 +119,7 @@ export default function UploadForm() {
                     onClose={() => setShowDownloadDialog(false)}
                     onDownload={handleDownload}
                     fileName="DensAIr_Summary.pptx"
+                    downloadUrl={downloadUrl}
                 />
             )}
             {showPaymentDialog && (
@@ -130,4 +132,3 @@ export default function UploadForm() {
         </>
     )
 }
-

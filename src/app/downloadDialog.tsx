@@ -1,15 +1,17 @@
-import React from 'react'
-import { X, Download, FileType } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardTitle, CardHeader, CardFooter } from '@/components/ui/card';
+import { Download } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface DownloadDialogProps {
     onClose: () => void
     onDownload: () => void
     fileName: string
+    downloadUrl: string | null
 }
 
-export function DownloadDialog({ onClose, onDownload, fileName }: DownloadDialogProps) {
+export function DownloadDialog({ onClose, onDownload, fileName, downloadUrl }: DownloadDialogProps) {
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <Card className="w-full max-w-md bg-card border-gray-800 shadow-lg">
@@ -25,7 +27,6 @@ export function DownloadDialog({ onClose, onDownload, fileName }: DownloadDialog
                 </CardHeader>
                 <CardContent className="pt-6">
                     <div className="flex items-center justify-center space-x-4">
-                        <FileType className="w-16 h-16 text-primary" />
                         <div>
                             <p className="text-lg font-semibold text-gray-300">{fileName}</p>
                             <p className="text-sm text-gray-400">Click the button below to download</p>
@@ -36,6 +37,7 @@ export function DownloadDialog({ onClose, onDownload, fileName }: DownloadDialog
                     <Button 
                         className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-2 px-4 rounded-md transition-all duration-300 ease-in-out"
                         onClick={onDownload}
+                        disabled={!downloadUrl}
                     >
                         <Download className="w-5 h-5 mr-2" />
                         Download PPTX
