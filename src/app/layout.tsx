@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/themeProvider"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'DensAIr - Condense knowledge, elevate learning',
-    description: 'AI-powered PDF summarization and PowerPoint creation for educational purposes',
+    title: 'DensAIr - Condense knowledge',
+    description: 'AI-powered PDF summarization and PowerPoint',
 }
 
 export default function RootLayout({
