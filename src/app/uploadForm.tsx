@@ -15,6 +15,7 @@ interface EstimationResult {
     size: number;
     pages: number;
     tokens: number;
+    estimatedCost: number;
 }
 
 export default function UploadForm() {
@@ -99,6 +100,7 @@ export default function UploadForm() {
         const result = await estimateTokens()
         if (result) {
             const estimatedCost = result.tokens * 0.003
+            setEstimationResult({...result, estimatedCost})
             setShowPaymentDialog(true)
         }
     }
@@ -137,7 +139,7 @@ export default function UploadForm() {
                     onClose={() => setShowPaymentDialog(false)}
                     onPaymentComplete={handleSubmit}
                     estimatedTokens={estimationResult.tokens}
-                    estimatedCost={estimationResult.tokens * 0.003}
+                    estimatedCost={estimationResult.estimatedCost}
                 />
             )}
         </>
