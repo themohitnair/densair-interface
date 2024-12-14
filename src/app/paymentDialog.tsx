@@ -11,9 +11,10 @@ interface PaymentDialogProps {
     onClose: () => void
     onPaymentComplete: () => void
     estimatedTokens: number
+    estimatedCost: number
 }
 
-export function PaymentDialog({ onClose, onPaymentComplete, estimatedTokens }: PaymentDialogProps) {
+export function PaymentDialog({ onClose, onPaymentComplete, estimatedTokens, estimatedCost }: PaymentDialogProps) {
     const [cardNumber, setCardNumber] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
     const [cvv, setCvv] = useState("")
@@ -27,8 +28,6 @@ export function PaymentDialog({ onClose, onPaymentComplete, estimatedTokens }: P
         }, 2000)
     }
 
-    const estimatedCost = (estimatedTokens / 1000 * 0.002).toFixed(2) // Assuming $0.002 per 1K tokens
-
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <Card className="w-full max-w-md bg-card border-gray-800 shadow-lg">
@@ -40,7 +39,7 @@ export function PaymentDialog({ onClose, onPaymentComplete, estimatedTokens }: P
                 </CardHeader>
                 <CardContent className="pt-6 space-y-4">
                     <p className="text-gray-300">Estimated tokens: {estimatedTokens}</p>
-                    <p className="text-gray-300">Estimated cost: ${estimatedCost}</p>
+                    <p className="text-gray-300">Estimated cost: ${estimatedCost.toFixed(2)}</p>
                     <div className="space-y-2">
                         <Label htmlFor="card-number" className="text-sm font-medium text-gray-300">Card Number</Label>
                         <Input

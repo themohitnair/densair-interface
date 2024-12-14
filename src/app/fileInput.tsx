@@ -30,8 +30,8 @@ export function FileInput({ onChange }: FileInputProps) {
     return (
         <div 
             {...getRootProps()} 
-            className={`p-6 border-2 border-dashed rounded-lg transition-colors duration-300 ease-in-out ${
-                isDragActive ? 'border-primary bg-primary/10' : 'border-gray-600 hover:border-primary/50'
+            className={`p-6 border-2 rounded-lg transition-colors duration-300 ease-in-out ${
+                isDragActive ? 'border-primary bg-black' : 'border-gray-600 hover:border-primary/50'
             }`}
         >
             <input {...getInputProps()} />

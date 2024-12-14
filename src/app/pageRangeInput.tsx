@@ -19,7 +19,7 @@ export function PageRangeInput({ fromPage, toPage, onFromPageChange, onToPageCha
                     min={1}
                     value={fromPage}
                     onChange={(e) => onFromPageChange(parseInt(e.target.value))}
-                    className="bg-secondary text-secondary-foreground border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="bg-black text-secondary-foreground"
                 />
             </div>
             <div className="flex-1 space-y-2">
@@ -30,7 +30,7 @@ export function PageRangeInput({ fromPage, toPage, onFromPageChange, onToPageCha
                     min={1}
                     value={toPage}
                     onChange={(e) => onToPageChange(parseInt(e.target.value))}
-                    className="bg-secondary text-secondary-foreground border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="bg-black text-secondary-foreground"
                 />
             </div>
         </div>
